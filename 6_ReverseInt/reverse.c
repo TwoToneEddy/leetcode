@@ -32,28 +32,29 @@ https://leetcode.com/problems/reverse-integer/description/
 #include <stdint.h>
 #include <stdarg.h>
 #include <stdlib.h>
+#include <math.h>
 
 int reverse(int x){
+
+    long long remainder, reversed=0;
+    long long a = pow(2,31);
+    while(x != 0){
+        remainder = x % 10;
+        reversed = reversed * 10 + remainder;
+        x /= 10;
+    }
+
+    if(reversed > pow(2,31) || reversed < pow(-2,31) - 1)
+        return(0);
+    else
+        return(reversed);
 
 }
 
 int main () {
 
-    if(isPalindrome(121))
-        printf("121 true\n");
-    else
-        printf("121 false\n");
-
-
-    if(isPalindrome(-121))
-        printf("-121 true\n");
-    else
-        printf("-121 false\n");
-
-    if(isPalindrome(10))
-        printf("10 true\n");
-    else
-        printf("10 false\n");
+    printf("%d\n",reverse(123));
+    printf("%d\n",reverse(9646324351));
 
 
     return(0);

@@ -33,15 +33,37 @@ https://leetcode.com/problems/palindrome-number/description/
 #include <stdint.h>
 #include <stdarg.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 bool isPalindrome(int x) {
-    return(false);
+    
+    long long reverse=0,remainder; 
+    int original=x;
+
+    if(x < 0){
+        return false;
+    }
+    
+    //Loop to iterate through each digit and produce the full
+    //integer reversed
+    while(x !=0){
+        remainder= x % 10;
+        reverse= reverse * 10 + remainder;
+        x /= 10;
+    }
+
+    if(original == reverse){
+        return true;
+    }
+    else{
+        return false;
+    }
     
 }
 
 int main () {
 
-    if(isPalindrome(121))
+    if(isPalindrome(123321))
         printf("121 true\n");
     else
         printf("121 false\n");
